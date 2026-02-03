@@ -155,16 +155,32 @@ You can override your ENS preferences on a per-swap basis if needed.
 
 ```
 agentic-trade-router/
-├── frontend/              # Next.js frontend
-│   ├── app/              # Next.js 14 app directory
-│   ├── components/       # React components
-│   ├── hooks/           # Custom wagmi hooks
-│   └── utils/           # Utility functions
-├── contracts/            # Solidity smart contracts
-│   ├── src/             # Contract source
-│   ├── test/            # Contract tests
-│   └── script/          # Deployment scripts
-├── docs/                # Additional documentation
+├── frontend/
+│   ├── app/
+│   │   ├── layout.tsx        # Root layout with providers
+│   │   ├── page.tsx          # Home page
+│   │   ├── swap/page.tsx     # Swap interface
+│   │   └── settings/page.tsx # Settings page
+│   ├── components/
+│   │   ├── providers.tsx     # Wagmi/RainbowKit providers
+│   │   ├── Navigation.tsx    # Nav component
+│   │   ├── SwapForm.tsx      # Swap UI
+│   │   ├── PreferencesDisplay.tsx
+│   │   └── SetPreferences.tsx
+│   ├── hooks/
+│   │   ├── useENSTradePreferences.ts  # Read ENS preferences
+│   │   ├── useSetENSPreferences.ts    # Set ENS preferences
+│   │   └── useSwap.ts                 # Execute swaps
+│   └── lib/
+│       ├── wagmi.ts          # Wagmi configuration
+│       └── contracts.ts      # Contract ABIs & addresses
+├── contracts/
+│   ├── src/
+│   │   ├── AgenticRouter.sol # Main router contract
+│   │   └── interfaces/IUniversalRouter.sol
+│   ├── test/AgenticRouter.t.sol
+│   ├── script/Deploy.s.sol
+│   └── foundry.toml
 └── README.md
 ```
 
@@ -193,13 +209,11 @@ forge test -vvv  # Verbose output
 
 ### Sepolia Testnet
 
-- **AgenticRouter**: `0x...` (add after deployment)
-- **Verification**: [Etherscan link]
-
-### Base Sepolia
-
-- **AgenticRouter**: `0x...` (add after deployment)
-- **Verification**: [Basescan link]
+- **AgenticRouter**: `0x...` (deploy with `forge script script/Deploy.s.sol --rpc-url sepolia --broadcast --verify`)
+- **Universal Router**: `0x3A9D48AB9751398BbFa63ad67599Bb04e4BdF98b`
+- **Pool Manager**: `0xE03A1074c86CFeDd5C142C4F04F1a1536e203543`
+- **Permit2**: `0x000000000022D473030F116dDEE9F6B43aC78BA3`
+- **WETH**: `0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9`
 
 ---
 
