@@ -4,6 +4,9 @@
 
 **ETHGlobal HackMoney 2026**
 
+## Live Demo
+**[https://agentic-trade-router.vercel.app](https://agentic-trade-router.vercel.app)**
+
 ---
 
 ## 🎯 What is this?
@@ -209,7 +212,8 @@ forge test -vvv  # Verbose output
 
 ### Sepolia Testnet
 
-- **AgenticRouter**: `0x...` (deploy with `forge script script/Deploy.s.sol --rpc-url sepolia --broadcast --verify`)
+- **AgenticRouter**: [`0xE39fc6A0120fe4297F81aB21821A666425cA538a`](https://sepolia.etherscan.io/address/0xE39fc6A0120fe4297F81aB21821A666425cA538a)
+- **Deployment Tx**: [`0xa94a30c6...`](https://sepolia.etherscan.io/tx/0xa94a30c6d490a595ef3ba1d516c51f03c0dd2f0e4c5106af3d5deb71f17d2923)
 - **Universal Router**: `0x3A9D48AB9751398BbFa63ad67599Bb04e4BdF98b`
 - **Pool Manager**: `0xE03A1074c86CFeDd5C142C4F04F1a1536e203543`
 - **Permit2**: `0x000000000022D473030F116dDEE9F6B43aC78BA3`
@@ -219,6 +223,7 @@ forge test -vvv  # Verbose output
 
 ## 📹 Demo Video
 
+<!-- TODO: Replace with actual video link after recording -->
 [Link to 3-minute demo video]
 
 **Timestamps:**
@@ -244,7 +249,7 @@ forge test -vvv  # Verbose output
 
 ## 🤝 Team
 
-- [Your Name] - Full Stack Developer
+- Paul - Full Stack Developer
 
 ---
 
