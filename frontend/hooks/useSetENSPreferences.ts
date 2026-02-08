@@ -4,7 +4,7 @@
 
 import { useWriteContract, usePublicClient, useAccount } from 'wagmi'
 import { useState, useCallback } from 'react'
-import { mainnet, sepolia } from 'wagmi/chains'
+import { mainnet } from 'wagmi/chains'
 import { namehash, normalize } from 'viem/ens'
 import { ENS_RESOLVER_ABI } from '@/lib/contracts'
 

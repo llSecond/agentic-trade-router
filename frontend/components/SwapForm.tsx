@@ -5,7 +5,7 @@ import { useAccount, useBalance } from 'wagmi'
 import { formatUnits, parseUnits } from 'viem'
 import { sepolia } from 'wagmi/chains'
 import { useSwap } from '@/hooks/useSwap'
-import { TOKENS, SEPOLIA_ADDRESSES } from '@/lib/contracts'
+import { TOKENS } from '@/lib/contracts'
 import { PreferencesDisplay } from './PreferencesDisplay'
 
 const tokens = TOKENS.sepolia
@@ -243,12 +243,6 @@ export function SwapForm() {
           )}
         </button>
 
-        {/* Contract Warning */}
-        {SEPOLIA_ADDRESSES.agenticRouter === '0x0000000000000000000000000000000000000000' && (
-          <p className="text-xs text-yellow-400 text-center mt-2">
-            AgenticRouter contract not deployed yet
-          </p>
-        )}
       </div>
     </div>
   )

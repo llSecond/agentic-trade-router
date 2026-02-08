@@ -3,7 +3,7 @@
 
 import { useWriteContract, useAccount, usePublicClient, useReadContract } from 'wagmi'
 import { useState, useCallback, useMemo } from 'react'
-import { parseUnits, formatUnits } from 'viem'
+import { parseUnits } from 'viem'
 import { sepolia } from 'wagmi/chains'
 import {
   useENSTradePreferences,
@@ -11,6 +11,7 @@ import {
   parseFeeTier,
   parseMaxHops,
   parseDeadline,
+  formatPreferences,
   TradePreferences,
 } from './useENSTradePreferences'
 import { AGENTIC_ROUTER_ABI, SEPOLIA_ADDRESSES, ERC20_ABI } from '@/lib/contracts'
@@ -176,14 +177,7 @@ export function useSwap() {
   /**
    * Get formatted preferences for display
    */
-  const formattedPreferences = useMemo(() => {
-    return {
-      slippage: `${preferences.slippage || '0.5'}%`,
-      feeTier: formatFeeTier(preferences.feeTier),
-      maxHops: preferences.maxHops || '2',
-      deadline: formatDeadline(preferences.deadline),
-    }
-  }, [preferences])
+  const formattedPreferences = useMemo(() => formatPreferences(preferences), [preferences])
 
   return {
     executeSwap,
@@ -196,28 +190,6 @@ export function useSwap() {
     ensName,
     clearError: () => setError(null),
   }
-}
-
-function formatFeeTier(feeTier: string | null): string {
-  const tier = parseInt(feeTier || '3000', 10)
-  switch (tier) {
-    case 100:
-      return '0.01%'
-    case 500:
-      return '0.05%'
-    case 3000:
-      return '0.3%'
-    case 10000:
-      return '1%'
-    default:
-      return '0.3%'
-  }
-}
-
-function formatDeadline(deadline: string | null): string {
-  const seconds = parseInt(deadline || '300', 10)
-  if (seconds < 60) return `${seconds}s`
-  return `${Math.floor(seconds / 60)}m`
 }
 
 /**
